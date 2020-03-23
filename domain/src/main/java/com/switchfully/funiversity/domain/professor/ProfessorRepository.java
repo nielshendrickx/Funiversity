@@ -1,5 +1,6 @@
 package com.switchfully.funiversity.domain.professor;
 
+import com.switchfully.funiversity.domain.exceptions.ProfessorDoesNotExistException;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -19,12 +20,20 @@ public class ProfessorRepository {
         return professor;
     }
 
-    public Professor getById(String id) throws IllegalArgumentException {
+    public Professor getById(String id) throws ProfessorDoesNotExistException {
         Professor foundProfessor = professorsById.get(id);
         if (foundProfessor == null) {
-            throw new IllegalArgumentException(String.format("No professor found with id %s", id));
+            throw new ProfessorDoesNotExistException(id);
         }
         return foundProfessor;
+    }
+
+    public void deleteById(String id) throws ProfessorDoesNotExistException {
+        Professor foundProfessor = professorsById.get(id);
+        if (foundProfessor == null) {
+            throw new ProfessorDoesNotExistException(id);
+        }
+        professorsById.remove(id);
     }
 
     public Collection<Professor> getAll() {

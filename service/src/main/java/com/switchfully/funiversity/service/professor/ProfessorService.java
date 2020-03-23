@@ -30,4 +30,12 @@ public class ProfessorService {
     public ProfessorDto save(ProfessorDto professorDto) {
         return professorMapper.toDto(professorRepository.save(professorMapper.toProfessor(professorDto)));
     }
+
+    public ProfessorDto update(ProfessorDto professorDto) {
+        return professorMapper.toDto(professorRepository.save(professorMapper.toExistingProfessor(professorDto)));
+    }
+
+    public void delete(String id) {
+        professorRepository.deleteById(id);
+    }
 }

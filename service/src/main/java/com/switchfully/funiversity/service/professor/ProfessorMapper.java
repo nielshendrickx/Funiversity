@@ -20,4 +20,8 @@ public class ProfessorMapper {
     public Professor toProfessor(ProfessorDto professorDto) {
         return new Professor(professorDto.getFirstName(), professorDto.getLastName());
     }
+
+    public Professor toExistingProfessor(ProfessorDto professorDto) {
+        return new Professor(professorDto.getId(), professorDto.getFirstName(), professorDto.getLastName());
+    }
 }

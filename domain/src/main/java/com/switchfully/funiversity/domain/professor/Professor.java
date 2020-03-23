@@ -14,6 +14,12 @@ public class Professor {
         this.lastName = lastName;
     }
 
+    public Professor(String id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }
